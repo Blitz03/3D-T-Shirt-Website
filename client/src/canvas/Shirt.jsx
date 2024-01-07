@@ -18,16 +18,9 @@ export default function Shirt() {
   // To let the T-Shirt tracks state changes
   const stateString = JSON.stringify(snap);
 
-  useFrame((state, delta) => {
-    easing.dampC(materials.lambert1.color, snap.color, 0.25, delta);
-
-    // update the color to the material
-    meshRef.current.material.color = materials.lambert1.color;
-    meshRef.current.material.needsUpdate = true;
-
-    // Set aoMapIntensity to 0
-    materials.lambert1.aoMapIntensity = 0;
-  });
+  useFrame((state, delta) =>
+    easing.dampC(materials.lambert1.color, snap.color, 0.25, delta)
+  );
 
   return (
     <group key={stateString}>
